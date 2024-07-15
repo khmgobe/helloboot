@@ -7,13 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tobyspring.helloboot.service.usecase.SimpleHelloUseCase;
 
-import java.util.Objects;
-
 @RestController
-public class HelloController implements ApplicationContextAware {
+public class HelloController {
 
     private final SimpleHelloUseCase simpleHelloUseCase;
-    private ApplicationContext applicationContext;
 
     public HelloController(SimpleHelloUseCase simpleHelloUseCase) {
         this.simpleHelloUseCase = simpleHelloUseCase;
@@ -21,11 +18,11 @@ public class HelloController implements ApplicationContextAware {
 
     @GetMapping("/hello")
     public String hello(String name) {
-        return simpleHelloUseCase.sayHello(Objects.requireNonNull(name));
-    }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
+        if(name == null || name.trim().length() == 0)  {
+            throw new IllegalArgumentException();
+        }
+
+        return simpleHelloUseCase.sayHello(name);
     }
 }
