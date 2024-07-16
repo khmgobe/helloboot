@@ -1,13 +1,14 @@
-package tobyspring.helloboot.util.annotation;
+package tobyspring.helloboot.util.config;
 
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Component
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface MyComponent {
+@Configuration(proxyBeanMethods = false)
+public @interface MyAutoConfiguration {
 }

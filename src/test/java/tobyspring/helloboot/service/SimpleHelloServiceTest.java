@@ -4,7 +4,19 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import tobyspring.helloboot.util.HelloDecorator;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 import static org.assertj.core.api.Assertions.assertThat;
+
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+@interface UnitTest{
+
+}
 
 class SimpleHelloServiceTest {
 
