@@ -7,4 +7,5 @@ public interface SimpleHelloUseCase {
 
     String sayHello(String name);
 
+    int countOf(String name);
 }

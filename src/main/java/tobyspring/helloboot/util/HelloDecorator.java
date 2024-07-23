@@ -18,4 +18,9 @@ public class HelloDecorator implements SimpleHelloUseCase {
     public String sayHello(String name) {
         return "*" + simpleHelloUseCase.sayHello(name) + "*";
     }
+
+    @Override
+    public int countOf(String name) {
+        return simpleHelloUseCase.countOf(name);
+    }
 }
